@@ -1,12 +1,14 @@
-package controller;
+package com.example.supermarket_management.controller;
 
+import com.example.supermarket_management.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import service.UserService;
+import com.example.supermarket_management.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 public class BaseController {
     /**
@@ -15,6 +17,8 @@ public class BaseController {
     @Autowired
     protected UserService userService;
 
+    @Autowired
+    protected GoodsService goodsService;
 
     /**
      * 创建session、Request、Response等对象

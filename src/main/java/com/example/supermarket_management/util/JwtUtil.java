@@ -1,4 +1,4 @@
-package util;
+package com.example.supermarket_management.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
@@ -18,7 +18,7 @@ public class JwtUtil {
     /**
      * 默认的过期时间，30分钟
      */
-    private static final Integer DEFAULT_EXPIRES = 60 * 30;
+    private static final Integer DEFAULT_EXPIRES = 30;
 
     /**
      * token默认的长度
@@ -30,14 +30,14 @@ public class JwtUtil {
      * 生成令牌
      *
      * @param map     数据正文
-     * @param expires 过期时间，单位(秒)
+     * @param expires 过期时间，单位(分钟)
      */
     public static String getToken(Map<String, String> map, Integer expires) throws Exception {
 
         //创建日历
         Calendar instance = Calendar.getInstance();
         //设置过期时间
-        instance.add(Calendar.SECOND, expires);
+        instance.add(Calendar.MINUTE, expires);
 
         //创建jwt builder对象
         JWTCreator.Builder builder = JWT.create();

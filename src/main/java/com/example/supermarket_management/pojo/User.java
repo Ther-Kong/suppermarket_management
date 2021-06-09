@@ -1,16 +1,16 @@
-package pojo;
+package com.example.supermarket_management.pojo;
 
 public class User {
     private int id;
     private String username;
-    private String pass;
+    private String pwd;
 
-    public String getPass() {
-        return pass;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public Integer getId() {
