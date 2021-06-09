@@ -15,7 +15,7 @@ import java.util.Map;
 public class UserController extends BaseController{
     @PostMapping("/login")
     public Result<String> login(@RequestBody User user) throws Exception {
-
+        System.out.println("111");
         //初始化返回值
         Result<String> result = new Result<>();
 

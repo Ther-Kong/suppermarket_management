@@ -11,9 +11,9 @@ import java.util.Map;
 
 public class JwtUtil {
     /**
-     * 签名 此签名为 rayfoo 的16位 大写 MD5
+     * 签名 此签名为16位 大写 MD5
      */
-    private static final String SIGN_KEY = "5A1332068BA9FD17";
+    private static final String SIGN_KEY = "FAEB7070FAEAC89D";
 
     /**
      * 默认的过期时间，30分钟

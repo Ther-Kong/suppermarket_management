@@ -3,6 +3,16 @@ package pojo;
 public class User {
     private int id;
     private String username;
+    private String pass;
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public Integer getId() {
         return id;
     }
