@@ -1,6 +1,6 @@
 package com.example.supermarket_management.controller;
 
-import com.example.supermarket_management.pojo.Good;
+import com.example.supermarket_management.pojo.Goods;
 import com.example.supermarket_management.util.Result;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class GoodsController extends BaseController{
 
     @GetMapping("/list")
-    public Result<ArrayList<Good>> getGoodsList() throws Exception{
-        Result<ArrayList<Good>> result = new Result<>();
-        ArrayList<Good> goods = new ArrayList<>();
+    public Result<ArrayList<Goods>> getGoodsList() throws Exception{
+        Result<ArrayList<Goods>> result = new Result<>();
+        ArrayList<Goods> goods = new ArrayList<>();
         goods = goodsService.getGoods();
         result.setCode(HttpStatus.OK.value());
         result.setMsg("获取成功！");

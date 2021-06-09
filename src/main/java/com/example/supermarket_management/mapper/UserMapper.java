@@ -13,6 +13,9 @@ public interface UserMapper {
     @Select("select id from user where username = #{username} ")
     String getUserIdByName(String username);
 
+    @Select("select count(*) from user where username = #{username}")
+    int checkUser(String user);
 
-
+    @Insert("insert into user (username, pwd) values (#{username}, #{pwd})")
+    int registerUser(String username,String pwd);
 }

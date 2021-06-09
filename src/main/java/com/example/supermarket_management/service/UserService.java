@@ -9,8 +9,16 @@ import com.example.supermarket_management.pojo.User;
 public class UserService {
     @Autowired
     UserMapper userMapper;
-    public User  login(User user) {
+    public User login(User user) {
         return userMapper.getUser(user.getUsername(), user.getPwd());
+    }
+
+    public int check_user(User user) {
+        return userMapper.checkUser(user.getUsername());
+    }
+
+    public int register(User user) {
+        return userMapper.registerUser(user.getUsername(), user.getPwd());
     }
 
     public String getUserIdByName(String username) {

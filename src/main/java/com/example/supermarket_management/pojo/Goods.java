@@ -2,7 +2,7 @@ package com.example.supermarket_management.pojo;
 
 import java.sql.Date;
 
-public class Good {
+public class Goods {
     private int id;
     private String name;
     private String category;

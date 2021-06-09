@@ -76,5 +76,26 @@ public class UserController extends BaseController {
         return result;
     }
 
+    @PostMapping("/register")
+    public Result<String> register(User user) throws Exception {
+        //初始化返回值
+        Result<String> result = new Result<>();
+        //验证用户是否存在与数据库
+        int flag = userService.check_user(user);
+
+        if (flag == 1) {
+            result.setCode(HttpStatus.NOT_FOUND.value());
+            result.setMsg("用户已存在！");
+        } else {
+            if (userService.register(user) == 1) {
+                result.setMsg("注册成功！");
+            } else {
+                result.setCode(HttpStatus.NOT_ACCEPTABLE.value());
+                result.setMsg("注册失败");
+            }
+        }
+
+        return result;
+    }
 
 }
