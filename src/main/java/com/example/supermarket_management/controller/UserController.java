@@ -1,10 +1,10 @@
-package controller;
+package com.example.supermarket_management.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pojo.User;
-import util.JwtUtil;
-import util.Result;
+import com.example.supermarket_management.pojo.User;
+import com.example.supermarket_management.util.JwtUtil;
+import com.example.supermarket_management.util.Result;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseController{
+public class UserController extends BaseController {
     @PostMapping("/login")
     public Result<String> login(@RequestBody User user) throws Exception {
         System.out.println("111");

@@ -1,8 +1,8 @@
-package controller;
+package com.example.supermarket_management.controller;
 
+import com.example.supermarket_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

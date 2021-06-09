@@ -1,4 +1,4 @@
-package util;
+package com.example.supermarket_management.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;

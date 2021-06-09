@@ -1,4 +1,4 @@
-package handler;
+package com.example.supermarket_management.handler;
 
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.JWTDecodeException;
@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import util.Result;
+import com.example.supermarket_management.util.Result;
 
 @ControllerAdvice@Slf4j
 public class ServiceExceptionHandler {

@@ -1,4 +1,4 @@
-package pojo;
+package com.example.supermarket_management.pojo;
 
 public class User {
     private int id;

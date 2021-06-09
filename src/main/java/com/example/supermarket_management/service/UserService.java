@@ -1,7 +1,7 @@
-package service;
+package com.example.supermarket_management.service;
 
 import org.springframework.stereotype.Service;
-import pojo.User;
+import com.example.supermarket_management.pojo.User;
 
 @Service
 public class UserService {

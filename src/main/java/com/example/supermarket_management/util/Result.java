@@ -1,4 +1,4 @@
-package util;
+package com.example.supermarket_management.util;
 
 import lombok.Data;
 

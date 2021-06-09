@@ -1,6 +1,6 @@
-package config;
+package com.example.supermarket_management.config;
 
-import interceptor.JwtInterceptor;
+import com.example.supermarket_management.interceptor.JwtInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
