@@ -14,11 +14,9 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController extends BaseController {
     @PostMapping("/login")
-    public Result<String> login(@RequestBody User user) throws Exception {
-        System.out.println("111");
+    public Result<String> login(User user) throws Exception {
         //初始化返回值
         Result<String> result = new Result<>();
-
         //用户登录校验
         User loginUser = userService.login(user);
 
@@ -34,11 +32,32 @@ public class UserController extends BaseController {
         payload.put("username", loginUser.getUsername());
 
         //获取令牌
-        String token = JwtUtil.getToken(payload, 20);
+        String token = JwtUtil.getToken(payload);
 
         //在响应结果中添加token
         result.setData(token);
 
+        //返回结果
+        return result;
+    }
+
+    @PostMapping("/refresh_token")
+    public Result<String> refreshToken(String username) throws Exception {
+
+        Map<String, String> payload = new HashMap<>(2);
+
+        //初始化payload
+        payload.put("id", userService.getUserIdByName(username));
+        payload.put("username",username);
+
+
+        //获取令牌
+        String token = JwtUtil.getToken(payload);
+        Result<String> result = new Result<>();
+        //在响应结果中添加token
+        result.setCode(HttpStatus.OK.value());
+        result.setMsg("token刷新成功");
+        result.setData(token);
         //返回结果
         return result;
     }
@@ -56,4 +75,6 @@ public class UserController extends BaseController {
         //返回结果
         return result;
     }
+
+
 }

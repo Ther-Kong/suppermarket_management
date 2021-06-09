@@ -1,9 +1,11 @@
 package com.example.supermarket_management.config;
 
 import com.example.supermarket_management.interceptor.JwtInterceptor;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@Component
 public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
