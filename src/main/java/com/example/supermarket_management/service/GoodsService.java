@@ -14,4 +14,12 @@ public class GoodsService {
     public ArrayList<Goods> getGoods() {
         return goodsMapper.getGoods();
     }
+
+    public int updateGoods(Goods goods) {
+        return goodsMapper.updateGoods(goods);
+    }
+
+    public int insertGoods(Goods goods) {
+        return goodsMapper.insertGoods(goods);
+    }
 }

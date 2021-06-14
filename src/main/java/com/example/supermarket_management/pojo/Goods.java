@@ -3,7 +3,8 @@ package com.example.supermarket_management.pojo;
 import java.sql.Date;
 
 public class Goods {
-    private int id;
+    private int no;
+    private String id;
     private String name;
     private String category;
     private float purchase;
@@ -12,11 +13,19 @@ public class Goods {
     private Date dateEnd;
     private int inventory;
 
-    public int getId() {
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
