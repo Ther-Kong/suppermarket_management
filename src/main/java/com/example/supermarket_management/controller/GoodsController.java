@@ -75,6 +75,21 @@ public class GoodsController extends BaseController{
         return result;
     }
 
+    @GetMapping("/purchase")
+    @Transactional(rollbackFor = {SQLException.class})
+    public Result<String> purchaseGoods(int no,int count){
+        System.out.println(no);
+        System.out.println(count);
+//        System.out.println(request.getParameter("no"));
+//        System.out.println(request.getParameter("count"));
+        //进货修改goods表中的inventory
+        //将操作记录插入inventory_records表中操作人固定写死，类型进货
+        Result<String> result = new Result<>();
+        result.setCode(200);
+        result.setMsg("物品销售成功");
+        return result;
+    }
+
     @GetMapping("delete")
     @Transactional(rollbackFor = {SQLException.class})
     public Result<String> deleteGoods(int no){
