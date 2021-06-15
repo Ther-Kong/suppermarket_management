@@ -80,7 +80,7 @@ public class UserController extends BaseController {
     public Result<String> register(User user) throws Exception {
         //初始化返回值
         Result<String> result = new Result<>();
-        //验证用户是否存在与数据库
+        //验证用户是否存在于数据库
         int flag = userService.check_user(user);
 
         if (flag == 1) {
