@@ -91,8 +91,21 @@ public class UserController extends BaseController {
                 result.setMsg("注册成功！");
             } else {
                 result.setCode(HttpStatus.NOT_ACCEPTABLE.value());
-                result.setMsg("注册失败");
+                result.setMsg("注册失败！");
             }
+        }
+
+        return result;
+    }
+
+    @PostMapping("updatePwd")
+    public Result<String> updatePwd(User user) throws Exception {
+        Result<String> result = new Result<>();
+        int flag = userService.updatePwd(user);
+
+        if (flag == 1) {
+            result.setCode(HttpStatus.OK.value());
+            result.setMsg("修改密码成功！");
         }
 
         return result;
