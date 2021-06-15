@@ -15,4 +15,8 @@ public class DateUtil {
         java.sql.Date result = new java.sql.Date(date.getTime());
         return result;
     }
+
+    public static java.sql.Date getCurrDate(){
+        return new java.sql.Date(System.currentTimeMillis());
+    }
 }

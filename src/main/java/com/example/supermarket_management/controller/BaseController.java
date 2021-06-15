@@ -1,6 +1,7 @@
 package com.example.supermarket_management.controller;
 
 import com.example.supermarket_management.service.GoodsService;
+import com.example.supermarket_management.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.example.supermarket_management.service.UserService;
@@ -20,6 +21,8 @@ public class BaseController {
     @Autowired
     protected GoodsService goodsService;
 
+    @Autowired
+    protected RecordService recordService;
     /**
      * 创建session、Request、Response等对象
      */

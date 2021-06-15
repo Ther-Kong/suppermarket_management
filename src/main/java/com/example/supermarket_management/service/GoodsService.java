@@ -19,7 +19,16 @@ public class GoodsService {
         return goodsMapper.updateGoods(goods);
     }
 
-    public int insertGoods(Goods goods) {
+    public Goods insertGoods(Goods goods) {
         return goodsMapper.insertGoods(goods);
+    }
+
+
+    public int getGoodsCountByNo(int goodsNo) {
+        return goodsMapper.getGoodsCountByNo(goodsNo);
+    }
+
+    public int updateGoodsInventory(int no, int count) {
+        return goodsMapper.updateGoodsInventory(no,count);
     }
 }

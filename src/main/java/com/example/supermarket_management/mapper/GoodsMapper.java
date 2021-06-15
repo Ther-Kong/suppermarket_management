@@ -21,5 +21,11 @@ public interface GoodsMapper {
     int updateGoods(Goods goods);
     @Insert("insert into goods (id,name,category,purchase,price,date_start,date_end,inventory)" +
             " values(#{id},#{name},#{category} ,#{purchase} ,#{price} ,#{dateStart} ,#{dateEnd} ,#{inventory} )")
-    int insertGoods(Goods goods);
+    Goods insertGoods(Goods goods);
+
+    @Select("select inventory from goods where no = #{goodsNo} ")
+    int getGoodsCountByNo(int goodsNo);
+
+    @Update("update goods set inventory = #{count} where no = #{no}")
+    int updateGoodsInventory(int no, int count);
 }

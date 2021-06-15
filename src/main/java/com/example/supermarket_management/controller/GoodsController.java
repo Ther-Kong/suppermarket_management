@@ -1,6 +1,7 @@
 package com.example.supermarket_management.controller;
 
 import com.example.supermarket_management.pojo.Goods;
+import com.example.supermarket_management.pojo.Record;
 import com.example.supermarket_management.util.DateUtil;
 import com.example.supermarket_management.util.Result;
 import lombok.Data;
@@ -42,15 +43,29 @@ public class GoodsController extends BaseController{
         goods.setDateEnd(DateUtil.strToDate(request.getParameter("dateEnd")));
         goods.setInventory(Integer.parseInt(request.getParameter("inventory")));
         int flag;
+        Record record = new Record();
         if(goodsNo!=0){
             //update操作
             System.out.println("开始更新操作");
+            int goodsNum = goodsService.getGoodsCountByNo(goodsNo);
             flag = goodsService.updateGoods(goods);
+            if (goodsNum<goods.getInventory()){
+                record.setType("进货");
+                record.setCount(goods.getInventory()-goodsNum);
+            }else{
+                record.setType("销售");
+                record.setCount(goodsNum-goods.getInventory());
+            }
+            record.setGoodsNo(goodsNo);
         }else{
             //add操作
             System.out.println("开始插入操作");
-            flag = goodsService.insertGoods(goods);
+            goods = goodsService.insertGoods(goods);
+            record.setGoodsNo(goods.getNo());
+            record.setType("进货");
         }
+        record.setTime(DateUtil.getCurrDate());
+        flag = recordService.insertRecord(record);
         System.out.println("插入操作完毕");
         System.out.println(goodsNo);
         Result<String> result = new Result<>();

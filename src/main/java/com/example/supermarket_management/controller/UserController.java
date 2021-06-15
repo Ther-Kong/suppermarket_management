@@ -14,15 +14,15 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController extends BaseController {
     @PostMapping("/login")
-    public Result<String> login(User user) throws Exception {
+    public Result<User> login(User user) throws Exception {
         //初始化返回值
-        Result<String> result = new Result<>();
+        Result<User> result = new Result<>();
         //用户登录校验
         User loginUser = userService.login(user);
 
         //没有抛出异常表示正常
         result.setCode(HttpStatus.OK.value());
-        result.setMsg("认证成功！");
+        result.setData(loginUser);
 
         //声明payload
         Map<String, String> payload = new HashMap<>(2);
@@ -35,7 +35,7 @@ public class UserController extends BaseController {
         String token = JwtUtil.getToken(payload);
 
         //在响应结果中添加token
-        result.setData(token);
+        result.setMsg(token);
 
         //返回结果
         return result;
