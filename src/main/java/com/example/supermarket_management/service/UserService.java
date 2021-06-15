@@ -21,6 +21,10 @@ public class UserService {
         return userMapper.registerUser(user.getUsername(), user.getPwd());
     }
 
+    public int updatePwd(User user) {
+        return userMapper.updatePwdUser(user.getUsername(), user.getPwd());
+    }
+
     public String getUserIdByName(String username) {
         return userMapper.getUserIdByName(username);
     }

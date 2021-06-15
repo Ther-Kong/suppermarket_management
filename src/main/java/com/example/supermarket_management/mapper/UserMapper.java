@@ -18,4 +18,7 @@ public interface UserMapper {
 
     @Insert("insert into user (username, pwd) values (#{username}, #{pwd})")
     int registerUser(String username,String pwd);
+
+    @Update("update user set pwd = #{pwd} where username = #{username}")
+    int updatePwdUser(String username,String pwd);
 }

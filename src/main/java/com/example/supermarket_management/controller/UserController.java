@@ -80,7 +80,7 @@ public class UserController extends BaseController {
     public Result<String> register(User user) throws Exception {
         //初始化返回值
         Result<String> result = new Result<>();
-        //验证用户是否存在与数据库
+        //验证用户是否存在于数据库
         int flag = userService.check_user(user);
 
         if (flag == 1) {
@@ -91,8 +91,21 @@ public class UserController extends BaseController {
                 result.setMsg("注册成功！");
             } else {
                 result.setCode(HttpStatus.NOT_ACCEPTABLE.value());
-                result.setMsg("注册失败");
+                result.setMsg("注册失败！");
             }
+        }
+
+        return result;
+    }
+
+    @PostMapping("updatePwd")
+    public Result<String> updatePwd(User user) throws Exception {
+        Result<String> result = new Result<>();
+        int flag = userService.updatePwd(user);
+
+        if (flag == 1) {
+            result.setCode(HttpStatus.OK.value());
+            result.setMsg("修改密码成功！");
         }
 
         return result;
