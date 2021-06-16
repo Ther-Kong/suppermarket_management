@@ -19,7 +19,7 @@ public class GoodsService {
         return goodsMapper.updateGoods(goods);
     }
 
-    public Goods insertGoods(Goods goods) {
+    public int insertGoods(Goods goods) {
         return goodsMapper.insertGoods(goods);
     }
 
@@ -30,5 +30,9 @@ public class GoodsService {
 
     public int updateGoodsInventory(int no, int count) {
         return goodsMapper.updateGoodsInventory(no,count);
+    }
+
+    public int deleteGoods(int no) {
+        return goodsMapper.deleteGoods(no);
     }
 }

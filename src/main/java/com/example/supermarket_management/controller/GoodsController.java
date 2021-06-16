@@ -60,8 +60,9 @@ public class GoodsController extends BaseController{
         }else{
             //add操作
             System.out.println("开始插入操作");
-            goods = goodsService.insertGoods(goods);
+            flag = goodsService.insertGoods(goods);
             record.setGoodsNo(goods.getNo());
+            record.setCount(goods.getInventory());
             record.setType("进货");
         }
         record.setTime(DateUtil.getCurrDate());
@@ -83,7 +84,15 @@ public class GoodsController extends BaseController{
 //        System.out.println(request.getParameter("no"));
 //        System.out.println(request.getParameter("count"));
         //销售修改goods表中的inventory
+        int num = goodsService.getGoodsCountByNo(no);
+        int flag = goodsService.updateGoodsInventory(no,num-count);
         //将操作记录插入inventory_records表中操作人固定写死，类型销售
+        Record record = new Record();
+        record.setGoodsNo(no);
+        record.setCount(count);
+        record.setType("销售");
+        record.setTime(DateUtil.getCurrDate());
+        flag = flag & recordService.insertRecord(record);
         Result<String> result = new Result<>();
         result.setCode(200);
         result.setMsg("物品销售成功");
@@ -109,9 +118,15 @@ public class GoodsController extends BaseController{
     @Transactional(rollbackFor = {SQLException.class})
     public Result<String> deleteGoods(int no){
         //将goods表中对应的goods的status改为=1
+        int flag = goodsService.deleteGoods(no);
         Result<String> result = new Result<>();
-        result.setCode(200);
-        result.setMsg("物品删除成功");
+        if (flag == 1) {
+            result.setCode(HttpStatus.OK.value());
+            result.setMsg("物品删除成功");
+        } else {
+            result.setCode(HttpStatus.NOT_ACCEPTABLE.value());
+            result.setMsg("物品删除失败");
+        }
         return result;
     }
 }
