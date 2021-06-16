@@ -35,4 +35,6 @@ public interface GoodsMapper {
     @Insert("insert into goods (id,name,category,purchase,price,date_start,date_end,inventory)" +
             " values(#{id},#{name},#{category} ,#{purchase} ,#{price} ,#{dateStart} ,#{dateEnd} ,#{inventory} )")
     int insertGoods(Goods goods);
+    @Update("update goods set status = 1 where goods = #{no}")
+    int deleteGoods(int no);
 }

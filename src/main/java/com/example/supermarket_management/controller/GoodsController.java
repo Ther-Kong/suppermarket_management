@@ -83,6 +83,7 @@ public class GoodsController extends BaseController{
 //        System.out.println(request.getParameter("no"));
 //        System.out.println(request.getParameter("count"));
         //进货修改goods表中的inventory
+
         //将操作记录插入inventory_records表中操作人固定写死，类型进货
         Result<String> result = new Result<>();
         result.setCode(200);
@@ -94,9 +95,15 @@ public class GoodsController extends BaseController{
     @Transactional(rollbackFor = {SQLException.class})
     public Result<String> deleteGoods(int no){
         //将goods表中对应的goods的status改为=1
+        int flag = goodsService.deleteGoods(no);
         Result<String> result = new Result<>();
-        result.setCode(200);
-        result.setMsg("物品删除成功");
+        if (flag == 1) {
+            result.setCode(HttpStatus.OK.value());
+            result.setMsg("物品删除成功");
+        } else {
+            result.setCode(HttpStatus.NOT_ACCEPTABLE.value());
+            result.setMsg("物品删除失败");
+        }
         return result;
     }
 }

@@ -22,4 +22,8 @@ public class GoodsService {
     public int insertGoods(Goods goods) {
         return goodsMapper.insertGoods(goods);
     }
+
+    public int deleteGoods(int no) {
+        return goodsMapper.deleteGoods(no);
+    }
 }
