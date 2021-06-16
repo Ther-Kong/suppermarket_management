@@ -5,7 +5,9 @@ import com.example.supermarket_management.pojo.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 public class RecordService {
@@ -23,5 +25,9 @@ public class RecordService {
 
     public int refund(int id) {
         return recordMapper.refund(id);
+    }
+
+    public ArrayList<HashMap<String, String>> getDailyReport(Date currDate) {
+        return recordMapper.getDailyReport(currDate);
     }
 }

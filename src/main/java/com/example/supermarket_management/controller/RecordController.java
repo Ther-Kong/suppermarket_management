@@ -2,6 +2,7 @@ package com.example.supermarket_management.controller;
 
 import com.example.supermarket_management.pojo.Goods;
 import com.example.supermarket_management.pojo.Record;
+import com.example.supermarket_management.util.DateUtil;
 import com.example.supermarket_management.util.Result;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("record")
@@ -48,4 +51,19 @@ public class RecordController extends BaseController{
         }
         return result;
     }
+
+    @GetMapping("report/daily")
+    public Result<ArrayList <String[]>>getDailyReport(){
+        Result<ArrayList <String[]>> result = new Result<>();
+        ArrayList<HashMap<String,String>> mapList = recordService.getDailyReport(DateUtil.getCurrDate());
+        ArrayList <String[]> data = new ArrayList<>();
+        data.add(new String []{"商品","销售总量","销售总额","净利润"});
+        for (HashMap<String,String> map:mapList) {
+            data.add(new String[]{map.get("name"),String.valueOf(map.get("all_count")),String.valueOf(map.get("all_price")),String.valueOf(map.get("profits"))});
+        }
+        result.setData(data);
+        result.setCode(HttpStatus.OK.value());
+        return result;
+    }
+
 }
