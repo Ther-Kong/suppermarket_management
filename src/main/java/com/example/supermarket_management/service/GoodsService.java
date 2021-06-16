@@ -24,11 +24,16 @@ public class GoodsService {
     }
 
 
+
     public int getGoodsCountByNo(int goodsNo) {
         return goodsMapper.getGoodsCountByNo(goodsNo);
     }
 
     public int updateGoodsInventory(int no, int count) {
         return goodsMapper.updateGoodsInventory(no,count);
+    }
+
+    public int deleteGoods(int no) {
+        return goodsMapper.deleteGoods(no);
     }
 }
